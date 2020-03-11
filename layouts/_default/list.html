@@ -11,7 +11,7 @@
         <div class="content">
           <h1 class="taxonomy-term">{{ T .Data.Singular }}: {{ .Data.Term }}</h1>
           <div class="post-list">
-            {{ range (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+            {{ range (where .Data.Pages "Type" "in" site.Params.mainSections) }}
             <div class="row post-item middle-xs">
               <div class="post-info col-xs-12 col-md-10 col-lg-10">
                 <div class="post-title">
