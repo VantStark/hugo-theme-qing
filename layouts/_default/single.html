@@ -7,15 +7,15 @@
 
   <main class="main container">
     <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-9 col-lg-offset-0">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-9 col-md-offset-0">
         <div class="content">
           <article class="post {{ .Site.Language.LanguageName }}" id="article">
+            {{ $RelPermalink := .RelPermalink }}
             <header class="post-header">
               <div class="post-title">
                 <span>{{ .Title }}</span>
               </div>
               {{ if in site.Params.mainSections .Type }}
-              {{ $RelPermalink := .RelPermalink }}
               {{ partial "post-meta.html" . }}
               {{ end }}
             </header>
@@ -23,6 +23,15 @@
             <div class="post-content markdown-body">
               {{ .Content }}
             </div>
+
+            {{ with .Params.tags }}
+            <div class="post-tags">
+              {{ range . }}
+              <a class="post-tag"
+                href="{{ "tags" | absURL}}/{{ . | urlize }}{{ if strings.HasSuffix $RelPermalink ".html" }}.html{{else}}/{{end}}">{{ . }}</a>
+              {{ end }}
+            </div>
+            {{ end }}
 
             {{ if in site.Params.mainSections .Type }}
             {{ partial "related.html" . }}
@@ -41,9 +50,7 @@
         </div>
       </div>
 
-      <div class="col-md-0 col-lg-3">
-        {{ partial "sidebar.html" . }}
-      </div>
+      {{ partial "sidebar.html" . }}
     </div>
   </main>
 
