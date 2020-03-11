@@ -1,0 +1,12 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      {{ range .Site.Params.socials }}
+      <div class="links-item">
+        <a href="{{ .link }}" target="_blank">{{ .name }}</a>
+      </div>
+      {{ end }}
+    </div>
+    <div class="powered">Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with qing.</div>
+  </div>
+</footer>

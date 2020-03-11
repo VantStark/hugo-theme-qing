@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ partial "head.html" . }}
+
+<body class="{{if .IsPage}}page{{end}}">
+  {{ partial "header.html" . }}
+
+  <main class="main container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-9 col-lg-offset-0">
+        <div class="content">
+          <article class="post {{ .Site.Language.LanguageName }}" id="article">
+            <header class="post-header">
+              <div class="post-title">
+                <span>{{ .Title }}</span>
+              </div>
+              {{ if in site.Params.mainSections .Type }}
+              {{ $RelPermalink := .RelPermalink }}
+              {{ partial "post-meta.html" . }}
+              {{ end }}
+            </header>
+
+            <div class="post-content markdown-body">
+              {{ .Content }}
+            </div>
+
+            {{ if in site.Params.mainSections .Type }}
+            {{ partial "related.html" . }}
+
+            {{ if .Site.Params.postAds }}
+            <div class="post-ads">{{ .Site.Params.postAds | safeHTML }}</div>
+            {{ end }}
+
+            {{ if .Site.Params.disqus }}
+            <div class="post-comments">
+              {{ partial "disqus.html" . }}
+            </div>
+            {{ end }}
+            {{ end }}
+          </article>
+        </div>
+      </div>
+
+      <div class="col-md-0 col-lg-3">
+        {{ partial "sidebar.html" . }}
+      </div>
+    </div>
+  </main>
+
+  {{ partial "footer.html" . }}
+
+  {{ partial "scripts.html" . }}
+
+  {{ if .Site.Params.extraBody }}
+  {{ .Site.Params.extraBody | safeHTML }}
+  {{ end }}
+</body>
+
+</html>

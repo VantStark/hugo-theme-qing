@@ -1,0 +1,21 @@
+category:
+  other: "Category"
+
+categories:
+  other: "Categories"
+
+tag:
+  other: "Tag"
+
+tags:
+  other: "Tags"
+
+toc:
+  other: "Table of contents"
+
+publishDate:
+  other: "Published on {{.Count}}"
+
+readingTime:
+  one: "About one minute to read"
+  other: "About {{.Count}} minutes to read"

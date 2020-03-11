@@ -1,0 +1,72 @@
+{{ if eq .Site.Params.highlight.defaultHandler "highlight" }}
+<script src="{{ .Site.Params.staticPrefix }}{{ "js/highlight.pack.js" | relURL }}"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+{{ end }}
+
+{{ if eq .Site.Params.highlight.defaultHandler "prism" }}
+<pre style="display:none;" class="language-xxx" id="prismBgColor"></pre>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js"
+  onload="Prism.plugins.autoloader.languages_path='https://cdn.jsdelivr.net/npm/prismjs@1.19.0/components/'"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/toolbar/prism-toolbar.min.js"></script>
+<script defer
+  src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/show-language/prism-show-language.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script defer
+  src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+{{ if and .Site.Params.highlight.prism.lineNumbers (not .IsHome) -}}
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script>
+  function fixPrismStyle() {
+    var highlightWrappers = document.getElementsByClassName("highlight");
+    var prismBgColor = null;
+    if (document.defaultView && document.defaultView.getComputedStyle) {
+      prismBgColor = document.defaultView.getComputedStyle(document.getElementById("prismBgColor")).getPropertyValue("background-color");
+    }
+
+    for (n = 0; n < highlightWrappers.length; n++) {
+      var chidren = highlightWrappers[n].childNodes;
+      for (i = 0; i < chidren.length; i++) {
+        if (chidren[i] && chidren[i].tagName.toLowerCase() != "pre") {
+          var nextChildren = chidren[i].childNodes;
+          for (j = 0; j < nextChildren.length; j++) {
+            if (nextChildren[j].tagName.toLowerCase() == "pre") {
+              nextChildren[j].classList.add("line-numbers");
+              if (prismBgColor != null) {
+                nextChildren[j].style["backgroundColor"] = prismBgColor;
+              }
+            }
+          }
+        } else {
+          chidren[i].classList.add("line-numbers");
+          if (prismBgColor != null) {
+            chidren[i].style["backgroundColor"] = prismBgColor;
+          }
+        }
+      }
+    }
+  }
+  fixPrismStyle();
+</script>
+{{ end }}
+<script>
+  function defaultPrismTheme() {
+    var defaultPrismTheme = document.createElement("link")
+    defaultPrismTheme.rel = "stylesheet";
+    defaultPrismTheme.href = "https://cdn.jsdelivr.net/npm/prismjs@1.19.0/themes/prism.css";
+    defaultPrismTheme.onload = defaultPrismTheme.onreadystatechange = fixPrismStyle;
+    document.getElementsByTagName("head")[0].appendChild(defaultPrismTheme);
+  }
+</script>
+{{ end }}
+
+{{ if and .Site.Params.lazyImage (not .IsHome) -}}
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.5.1/dist/lazyload.min.js"></script>
+<script>
+  var lazyImage = new LazyLoad({
+    container: document.getElementById('article')
+  });
+</script>
+{{ end }}

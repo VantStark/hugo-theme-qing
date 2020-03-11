@@ -1,0 +1,21 @@
+<div class="post-meta">
+  {{ if .Site.Author.name }}
+  <a class="post-meta-item post-author" href="{{ .Site.Author.homepage }}" target="_blank">@{{ .Site.Author.name }}</a>
+  {{ end }}
+  {{ if .Date }}
+  <span class="post-meta-item post-date"
+    time="{{ .Date.Format "2006-01-02 15:04:05 CST" }}">{{ T "publishDate" (.Date.Format "2006-01-02") }}</span>
+  {{ end }}
+  {{ $RelPermalink := .RelPermalink }}
+  {{ with .Params.categories }}
+  | <span class="post-meta-item post-categories">
+    {{ range . }}
+    <a class="post-category"
+      href="{{ "categories" | absURL}}/{{ . | urlize }}{{ if strings.HasSuffix $RelPermalink ".html" }}.html{{else}}/{{end}}">{{ . }}</a>
+    {{ end }}
+  </span>
+  {{ end }}
+  {{ if .ReadingTime }}
+  | <span class="post-meta-item post-read-time">{{ T "readingTime" .ReadingTime }}</span>
+  {{ end }}
+</div>

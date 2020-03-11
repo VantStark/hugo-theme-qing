@@ -1,0 +1,30 @@
+<div class="sidebar">
+  {{ with .TableOfContents }}
+  <section class="toc">
+    <h3>{{ T "toc" }}</h3>
+    <div class="block">
+      {{ . }}
+    </div>
+  </section>
+  {{end}}
+
+  <section class="categories">
+    <h3>{{ T "categories" }}</h3>
+    <div class="block">
+      <ul>
+        {{ range .Site.Taxonomies.categories.ByCount }}
+        <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> ({{ .Count }})</li>
+        {{ end }}
+      </ul>
+    </div>
+  </section>
+
+  <section class="tags">
+    <h3>{{ T "tags" }}</h3>
+    <div class="block">
+      {{ range .Site.Taxonomies.tags.ByCount }}
+      <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+      {{ end }}
+    </div>
+  </section>
+</div>

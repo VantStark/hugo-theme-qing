@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ partial "head.html" . }}
+
+<body>
+  {{ partial "header.html" . }}
+
+  <main class="main container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-9 col-lg-offset-0">
+        <div class="content">
+          <h1 class="taxonomy-term">{{ T .Data.Singular }}: {{ .Data.Term }}</h1>
+          <div class="post-list">
+            {{ range (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+            <div class="row post-item middle-xs">
+              <div class="post-info col-xs-12 col-md-10 col-lg-10">
+                <div class="post-title">
+                  <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </div>
+                {{ $RelPermalink := .RelPermalink }}
+                {{ partial "post-meta.html" . }}
+                <div
+                  class="post-excerpt {{if lt (countwords .Summary) 90}}one-line{{else if lt (countwords .Summary) 130}}two-line{{else}}three-line{{end}}">
+                  {{ .Summary }}
+                </div>
+                {{ with .Params.tags }}
+                <div class="post-tags">
+                  {{ range . }}
+                  <a class="post-tag"
+                    href="{{ "tags" | absURL}}/{{ . | urlize }}{{ if strings.HasSuffix $RelPermalink ".html" }}.html{{else}}/{{end}}">{{ . }}</a>
+                  {{ end }}
+                </div>
+                {{ end }}
+              </div>
+              <div class="col-md-2 col-lg-2">
+                {{ range first 1 (findRE "<img.*>" .Content) }}
+                <img class="cover" src="{{ replaceRE "<img.*src=\"(.*)\".*alt.*>" "$1" . }}">
+                {{ end }}
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-0 col-lg-3">
+        {{ partial "sidebar.html" . }}
+      </div>
+    </div>
+  </main>
+
+  {{ partial "footer.html" . }}
+
+  {{ partial "scripts.html" . }}
+</body>
+
+</html>

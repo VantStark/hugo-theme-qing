@@ -1,0 +1,20 @@
+category:
+  other: "分类"
+
+categories:
+  other: "分类"
+
+tag:
+  other: "标签"
+
+tags:
+  other: "标签"
+
+toc:
+  other: "目录"
+
+publishDate:
+  other: "发布于 {{.Count}}"
+
+readingTime:
+  other: "约 {{.Count}} 分钟"
