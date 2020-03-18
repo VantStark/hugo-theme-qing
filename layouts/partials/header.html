@@ -1,11 +1,18 @@
 {{ $curLanguageName := .Site.Language.LanguageName }}
 <header class="header">
   <div class="container">
-    <div class="row">
-      <div class="signatures site-title col-xs-12 col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0">
-        <a href="{{ .Site.LanguagePrefix }}/">{{ or .Site.Params.headTitle .Site.Author.name }}</a>
-      </div>
+    <div class="signatures site-title">
+      <a href="{{ relLangURL "/" }}">{{ or .Site.Params.logoTitle .Site.Title }}</a>
     </div>
+    <nav class="site-navbar">
+      <ul class="menu">
+        {{ range .Site.Menus.main }}
+        <li class="menu-item">
+          <a class="menu-item-link" href="{{ .URL | safeURL }}">{{ or (T .Name) .Name }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </nav>
   </div>
 </header>
 <!-- <div class="row end-xs">

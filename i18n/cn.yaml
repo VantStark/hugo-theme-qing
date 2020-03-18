@@ -13,6 +13,15 @@ tags:
 toc:
   other: "目录"
 
+Home:
+  other: "主页"
+
+Tools:
+  other: "工具"
+
+About:
+  other: "关于"
+
 publishDate:
   other: "发布于 {{.Count}}"
 

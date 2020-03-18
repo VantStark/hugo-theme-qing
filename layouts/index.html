@@ -19,7 +19,7 @@
                 {{ $RelPermalink := .RelPermalink }}
                 {{ partial "post-meta.html" . }}
                 <div
-                  class="post-excerpt {{if lt (countwords .Summary) 90}}one-line{{else if lt (countwords .Summary) 130}}two-line{{else}}three-line{{end}}">
+                  class="post-excerpt {{if lt (countwords .Summary) 100}}one-line{{else if lt (countwords .Summary) 140}}two-line{{else}}three-line{{end}}">
                   {{ .Summary }}
                 </div>
                 {{ with .Params.tags }}

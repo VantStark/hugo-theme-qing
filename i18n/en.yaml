@@ -13,6 +13,15 @@ tags:
 toc:
   other: "Table of contents"
 
+Home:
+  other: "Home"
+
+Tools:
+  other: "Tools"
+
+About:
+  other: "About"
+
 publishDate:
   other: "Published on {{.Count}}"
 

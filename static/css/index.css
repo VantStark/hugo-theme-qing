@@ -6,6 +6,7 @@ body {
     sans-serif;
   background-color: #e9ecef;
   -webkit-font-smoothing: antialiased;
+  font-size: 15px;
 }
 a {
   color: #000;
@@ -34,10 +35,35 @@ a:hover {
 .site-title {
   font-size: 3rem;
   line-height: 60px;
-  margin-left: 1rem;
+  padding-left: 1rem;
+  display: inline-block;
 }
 .site-title:hover {
   font-weight: 700;
+}
+.site-navbar {
+  display: inline-block;
+  float: right;
+  line-height: 60px;
+  font-size: 1.2rem;
+  padding-right: 1rem;
+}
+.site-navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.site-navbar ul li {
+  display: inline-block;
+}
+.site-navbar .menu-item-link {
+  line-height: 60px;
+}
+.site-navbar .menu-item:not(:last-child) .menu-item-link {
+  margin-right: 1rem;
+}
+.site-navbar .menu-item:not(:first-child) .menu-item-link {
+  margin-left: 1rem;
 }
 /* .lang-switch {
   font-weight: 600;
@@ -167,7 +193,7 @@ a:hover {
 }
 .post .post-content p {
   text-align: justify;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 .post .post-content,
 .post .post-tags,
@@ -327,6 +353,12 @@ a:hover {
 
 /* overwrite github-markdown */
 
+.markdown-body pre,
+.markdown-body code {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', Arial, 'Liberation Sans', 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans CJK SC',
+    'Source Han Sans SC', 'Source Han Sans CN', 'Microsoft YaHei', 'Wenquanyi Micro Hei', 'WenQuanYi Zen Hei', 'ST Heiti', SimHei, 'WenQuanYi Zen Hei Sharp',
+    monospace;
+}
 .highlight table td:first-child pre {
   border-radius: 3px 0 0 3px;
   padding: 12px 6px;
