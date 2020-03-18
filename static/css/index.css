@@ -244,6 +244,16 @@ a:hover {
 .sidebar section ul > li:not(:first-child) {
   margin-top: 0.5rem;
 }
+.sidebar .poems .block {
+  padding: 1rem 0.3rem;
+}
+.sidebar .poems .jinrishici {
+  margin: 0;
+  padding: 0.5rem 0;
+  font-weight: bold;
+  text-align: center;
+  color: #07f;
+}
 .sidebar .tags .block {
   padding: 1rem 1rem 0.625rem 1rem;
 }
