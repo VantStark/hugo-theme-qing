@@ -2,7 +2,7 @@
 <html lang="en">
 {{ partial "head.html" . }}
 
-<body class="{{if .IsPage}}page{{end}}">
+<body class="{{if .IsPage}}page{{end}} {{ if in site.Params.mainSections .Type }}post-page{{end}}">
   {{ partial "header.html" . }}
 
   <main class="main container">

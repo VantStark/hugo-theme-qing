@@ -337,6 +337,9 @@ a:hover {
   .sidebar .tags {
     display: none;
   }
+  .post-page .sidebar .poems {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 767px) {
