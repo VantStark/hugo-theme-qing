@@ -13,6 +13,12 @@ tags:
 toc:
   other: "目录"
 
+loading:
+  other: "正在加载"
+
+"Related Posts":
+  other: "相关文章"
+
 Home:
   other: "主页"
 
