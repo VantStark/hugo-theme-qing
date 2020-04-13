@@ -12,7 +12,7 @@
           <div class="post-list">
             {{ range (where site.RegularPages "Type" "in" site.Params.mainSections) }}
             <div class="row post-item middle-xs">
-              <div class="post-info col-xs-12 col-md-10">
+              <div class="post-info col-xs-12{{ if (findRE "<img.*>" .Content) }} col-md-10{{ end }}">
                 <div class="post-title">
                   <a href="{{ .RelPermalink }}">{{ .Title }}</a>
                 </div>
