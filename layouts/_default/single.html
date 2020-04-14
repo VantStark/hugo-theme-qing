@@ -13,7 +13,7 @@
             {{ $RelPermalink := .RelPermalink }}
             <header class="post-header">
               <div class="post-title">
-                <span>{{ .Title }}</span>
+                <span>{{ or (T .Title) .Title }}</span>
               </div>
               {{ if in site.Params.mainSections .Type }}
               {{ partial "post-meta.html" . }}
